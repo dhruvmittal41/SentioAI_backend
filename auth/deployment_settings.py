@@ -25,6 +25,7 @@ MIDDLEWARE = [
 
 
 CORS_ALLOWED_ORIGINS = ["https://sentioai-frontend.onrender.com"]
+CORS_ALLOW_ALL_ORIGINS = True
 
 STORAGES = {
     "default": {
