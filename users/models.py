@@ -7,6 +7,7 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
 from django.utils.html import strip_tags
 from django.utils.translation import gettext_lazy as __
+import os
 
 
 def upload_to(instance, filename):
@@ -44,7 +45,7 @@ class CustomUser(AbstractUser):
 
 @receiver(reset_password_token_created)
 def password_reset_token_created(reset_password_token, *args, **kwargs):
-    sitelink = "http://localhost:5173/"
+    sitelink = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
     token = "{}".format(reset_password_token.key)
     full_link = str(sitelink) + str("password-reset/")+str(token)
     print(full_link)
